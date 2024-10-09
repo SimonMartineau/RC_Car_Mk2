@@ -15,8 +15,6 @@
         <color rgba="0.7 0.7 0.7 1" />
     </material>
 
-    <link name="base_footprint" />
-
     <!-- BASE LINK -->
 
     <link name="base_link">
@@ -38,11 +36,9 @@
         </xacro:inertial_box>
     </link>
 
-    <joint name="base_joint" type="fixed">
-        <parent link="base_footprint" />
-        <child link="base_link" />
-        <origin xyz="0 0 0.1" rpy="0 0 0" />
-    </joint>
+    <gazebo reference="base_link">
+        <material>Gazebo/Green</material>
+    </gazebo>
 
     <!-- LIDAR LINK -->
 
@@ -70,6 +66,10 @@
         <child link="lidar_link" />
         <origin xyz="0 0 0.225" rpy="0 0 0" />
     </joint>
+
+    <gazebo reference="lidar_link">
+        <material>Gazebo/Blue</material>
+    </gazebo>
 
     <!-- LEFT WHEEL LINK -->
 
@@ -99,6 +99,10 @@
         <axis xyz="0 1 0" />
     </joint>
 
+    <gazebo reference="left_wheel_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
     <!-- RIGHT WHEEL LINK -->
 
     <link name="right_wheel_link">
@@ -127,6 +131,10 @@
         <axis xyz="0 1 0" />
     </joint>
 
+    <gazebo reference="right_wheel_link">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
     <!-- CASTER WHEEL LINK -->
 
     <link name="caster_wheel_link">
@@ -153,5 +161,11 @@
         <child link="caster_wheel_link"/>
         <origin xyz="0.2 0 0" rpy="0 0 0"/>
     </joint>
+
+    <gazebo reference="caster_wheel_link">
+        <material>Gazebo/Grey</material>
+        <mu1 value ="0.001"/>
+        <mu2 value ="0.001"/>
+    </gazebo>
     
 </robot>
